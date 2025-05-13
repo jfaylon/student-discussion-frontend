@@ -16,17 +16,28 @@ const WordCloudCanvas = dynamic(() => import("@/components/WordCloudCanvas"), {
 const CoursePage: React.FC = () => {
   const { courseId } = useParams();
   const [data, setData] = useState<CourseData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await getDashboardCourseData(courseId as string);
-      setData(res.data.course);
+      try {
+        const res = await getDashboardCourseData(courseId as string);
+        setData(res.data.course);
+      } catch (error) {
+        setError((error as Error).message);
+      }
     };
 
     fetchData();
   }, [courseId]);
 
-  if (!data) return <p className="p-6">Loading course data...</p>;
+  if (!data)
+    return (
+      <div className="flex min-h-screen bg-gray-100">
+        <Sidebar />
+        <p className="p-6">{error || "Loading course data..."}</p>{" "}
+      </div>
+    );
 
   const totalEntries = data.topics.reduce((sum, t) => sum + t.entry_count, 0);
   const wordList = Object.entries(data.wordFrequency).map(([text, value]) => ({
