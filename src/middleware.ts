@@ -35,7 +35,6 @@ export const middleware = async (req: NextRequest): Promise<NextResponse> => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       // Error reaching backend = assume not valid
-      console.log(err);
       if (isProtectedRoute) {
         return NextResponse.redirect(new URL("/login", req.url));
       }
