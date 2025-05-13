@@ -14,8 +14,8 @@ const Home: React.FC = () => {
         if (res.status === 200) {
           router.replace("/dashboard");
         }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
-        console.error("Not authenticated", err);
         router.replace("/login");
       }
     };
