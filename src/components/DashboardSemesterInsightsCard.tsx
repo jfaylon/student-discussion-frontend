@@ -96,7 +96,6 @@ const DashboardSemesterInsightsCard: React.FC = () => {
         <p>Loading...</p>
       ) : (
         <>
-          {/* Semester Summary */}
           <div className="mt-6 border-t pt-4">
             <h3 className="text-lg font-semibold mb-2">Semester Summary</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
@@ -145,7 +144,6 @@ const DashboardSemesterInsightsCard: React.FC = () => {
             </div>
           </div>
           <br />
-          {/* Table */}
           <div className="overflow-x-auto mb-6">
             <table className="w-full table-auto border text-sm">
               <thead>
@@ -185,7 +183,6 @@ const DashboardSemesterInsightsCard: React.FC = () => {
             </table>
           </div>
 
-          {/* Bar Chart */}
           <div className="w-full">
             <Bar data={chartData} options={chartOptions} />
           </div>

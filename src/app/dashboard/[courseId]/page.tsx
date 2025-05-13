@@ -57,7 +57,6 @@ const CoursePage: React.FC = () => {
           </Link>
         </div>
 
-        {/* Course Header */}
         <div>
           <h1 className="text-2xl font-bold">{data.course_name}</h1>
           <p className="text-gray-500">
@@ -65,14 +64,12 @@ const CoursePage: React.FC = () => {
           </p>
         </div>
 
-        {/* Summary Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <DashboardCard title="Enrolled Students" value={data.student_count} />
           <DashboardCard title="Topics" value={data.topics.length} />
           <DashboardCard title="Total Entries" value={totalEntries} />
         </div>
 
-        {/* Topic Table */}
         <div className="bg-white p-4 rounded shadow overflow-x-auto mb-6">
           <h2 className="text-lg font-semibold mb-2">Topics Overview</h2>
           <table className="w-full text-sm table-auto border-collapse">

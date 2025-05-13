@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Menu, LayoutDashboard } from "lucide-react"; // optional: for hamburger icon
+import { Menu, LayoutDashboard } from "lucide-react";
 import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { logout } from "@/api/auth";
@@ -19,7 +19,6 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      {/* Toggle button (visible on small screens only) */}
       <button
         className="md:hidden p-4 fixed top-4 left-4 z-50 bg-white shadow rounded"
         onClick={() => setIsOpen(!isOpen)}
@@ -28,7 +27,6 @@ const Sidebar: React.FC = () => {
         <Menu />
       </button>
 
-      {/* Sidebar */}
       <aside
         className={`
         h-screen w-64 bg-white shadow overflow-y-auto
@@ -64,7 +62,6 @@ const Sidebar: React.FC = () => {
         </div>
       </aside>
 
-      {/* Overlay for mobile sidebar */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black opacity-25 z-30 md:hidden"

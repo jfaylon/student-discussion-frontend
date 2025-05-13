@@ -24,8 +24,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await me()
-        console.log("User data:", res.data);
+        const res = await me();
         setUser(res.data); // expect: { user_login_id, role }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
