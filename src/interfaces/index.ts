@@ -20,6 +20,8 @@ export interface DashboardData {
 }
 
 export interface User {
+  user_id: string;
+  user_name: string;
   user_login_id: string;
   role: string;
 }

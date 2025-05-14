@@ -45,7 +45,7 @@ const Sidebar: React.FC = () => {
           </h2>
           <nav className="flex flex-col gap-4">
             <div className="text-md text-gray-600 mb-4">
-              <p>{`${UI_STRINGS.text.welcome} ${user?.user_login_id}!`}</p>
+              <p>{`${UI_STRINGS.text.welcome} ${user?.user_name}!`}</p>
               <p>{`${UI_STRINGS.text.role}: ${user?.role}`}</p>
             </div>
             <Link
