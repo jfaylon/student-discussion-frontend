@@ -2,6 +2,7 @@ export const UI_STRINGS = {
   title: {
     lmsInsightsPanel: "LMS Insights Panel",
     dashboard: "Dashboard",
+    lmsInsightsDashboardLogin: "LMS Insights Dashboard"
   },
   text: {
     averageTopicsPerCourse: "Average Topics per Course",

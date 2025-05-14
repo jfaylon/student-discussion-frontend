@@ -32,7 +32,9 @@ const LoginPage: React.FC = () => {
         onSubmit={handleLogin}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md"
       >
-        <h2 className="text-2xl mb-4 font-semibold text-center">Login</h2>
+        <h2 className="text-2xl mb-4 font-semibold text-center">
+          {UI_STRINGS.title.lmsInsightsDashboardLogin}
+        </h2>
         {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
         <input
