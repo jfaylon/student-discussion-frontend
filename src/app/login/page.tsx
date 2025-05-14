@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/api/auth";
+import { UI_STRINGS } from "@/constants";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -56,9 +57,9 @@ const LoginPage: React.FC = () => {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 w-full rounded"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 w-full rounded cursor-pointer"
         >
-          Log In
+          {UI_STRINGS.buttons.login}
         </button>
       </form>
     </div>

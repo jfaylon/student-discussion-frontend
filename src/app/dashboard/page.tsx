@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import DashboardSemesterInsightsCard from "@/components/DashboardSemesterInsightsCard";
 import { DashboardData } from "@/interfaces";
 import { getDashboardData } from "@/api/dashboard";
+import { UI_STRINGS } from "@/constants";
 
 const DashboardPage: React.FC = () => {
   const [data, setData] = useState<DashboardData | null>(null);
@@ -22,14 +23,16 @@ const DashboardPage: React.FC = () => {
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
       <main className="flex-1 p-6">
-        <h1 className="text-2xl font-semibold mb-6">Dashboard</h1>
+        <h1 className="text-2xl font-semibold mb-6">
+          {UI_STRINGS.title.dashboard}
+        </h1>
 
         {!data ? (
-          <p>Loading...</p>
+          <p>{UI_STRINGS.text.loading}</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             <DashboardCard
-              title="Total Users"
+              title={UI_STRINGS.text.totalUsers}
               value={
                 (Object.values(data.users) as number[]).reduce(
                   (sum, currentValue) =>
@@ -39,10 +42,13 @@ const DashboardPage: React.FC = () => {
               }
             />
             <DashboardCard
-              title="Total Students"
+              title={UI_STRINGS.text.totalStudents}
               value={data.enrollments.student_active || 0}
             />
-            <DashboardCard title="Total Courses" value={data.courses?.length} />
+            <DashboardCard
+              title={UI_STRINGS.text.totalCourses}
+              value={data.courses?.length}
+            />
             <DashboardSemesterInsightsCard />
           </div>
         )}

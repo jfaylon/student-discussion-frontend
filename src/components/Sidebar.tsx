@@ -6,6 +6,7 @@ import { Menu, LayoutDashboard } from "lucide-react";
 import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { logout } from "@/api/auth";
+import { UI_STRINGS } from "@/constants";
 
 const Sidebar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,24 +40,26 @@ const Sidebar: React.FC = () => {
       `}
       >
         <div className="p-6">
-          <h2 className="text-xl font-bold mb-6">LMS Insights Panel</h2>
+          <h2 className="text-xl font-bold mb-6">
+            {UI_STRINGS.title.lmsInsightsPanel}
+          </h2>
           <nav className="flex flex-col gap-4">
             <div className="text-md text-gray-600 mb-4">
-              <p>Welcome {user?.user_login_id}!</p>
-              <p>Role: {user?.role}</p>
+              <p>{`${UI_STRINGS.text.welcome} ${user?.user_login_id}!`}</p>
+              <p>{`${UI_STRINGS.text.role}: ${user?.role}`}</p>
             </div>
             <Link
               href="/dashboard"
               className="flex items-center text-blue-600 hover:underline gap-2"
             >
               <LayoutDashboard className="w-4 h-4" />
-              Dashboard
+              {UI_STRINGS.navBar.dashboard}
             </Link>
             <button
               onClick={handleLogout}
               className="text-red-600 hover:underline mt-4 cursor-pointer"
             >
-              Logout
+              {UI_STRINGS.buttons.logout}
             </button>
           </nav>
         </div>

@@ -8,6 +8,7 @@ import Link from "next/link";
 import DashboardCard from "@/components/DashboardCard";
 import { CourseData } from "@/interfaces";
 import { getDashboardCourseData } from "@/api/dashboard";
+import { UI_STRINGS } from "@/constants";
 
 const WordCloudCanvas = dynamic(() => import("@/components/WordCloudCanvas"), {
   ssr: false,
@@ -35,7 +36,7 @@ const CoursePage: React.FC = () => {
     return (
       <div className="flex min-h-screen bg-gray-100">
         <Sidebar />
-        <p className="p-6">{error || "Loading course data..."}</p>{" "}
+        <p className="p-6">{error || UI_STRINGS.text.loadingCourseData}</p>
       </div>
     );
 
@@ -52,7 +53,7 @@ const CoursePage: React.FC = () => {
         <div className="mb-6">
           <Link href="/dashboard">
             <button className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded hover:bg-blue-200 cursor-pointer">
-              ← Back to Dashboard
+              {UI_STRINGS.buttons.backToDashboard}
             </button>
           </Link>
         </div>
@@ -60,24 +61,39 @@ const CoursePage: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold">{data.course_name}</h1>
           <p className="text-gray-500">
-            {data.course_code} • Semester: {data.semester}
+            {`${data.course_code} • ${UI_STRINGS.text.semester}: ${data.semester}`}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-          <DashboardCard title="Enrolled Students" value={data.student_count} />
-          <DashboardCard title="Topics" value={data.topics.length} />
-          <DashboardCard title="Total Entries" value={totalEntries} />
+          <DashboardCard
+            title={UI_STRINGS.text.enrolledStudents}
+            value={data.student_count}
+          />
+          <DashboardCard
+            title={UI_STRINGS.text.totalTopics}
+            value={data.topics.length}
+          />
+          <DashboardCard
+            title={UI_STRINGS.text.totalEntries}
+            value={totalEntries}
+          />
         </div>
 
         <div className="bg-white p-4 rounded shadow overflow-x-auto mb-6">
-          <h2 className="text-lg font-semibold mb-2">Topics Overview</h2>
+          <h2 className="text-lg font-semibold mb-2">
+            {UI_STRINGS.text.topicsOverview}
+          </h2>
           <table className="w-full text-sm table-auto border-collapse">
             <thead className="bg-gray-100 text-left">
               <tr>
-                <th className="p-2 border">Topic ID</th>
-                <th className="p-2 border">Title</th>
-                <th className="p-2 border">Entry Count</th>
+                <th className="p-2 border">
+                  {UI_STRINGS.tableHeaders.topicId}
+                </th>
+                <th className="p-2 border">{UI_STRINGS.tableHeaders.title}</th>
+                <th className="p-2 border">
+                  {UI_STRINGS.tableHeaders.entryCount}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -95,7 +111,7 @@ const CoursePage: React.FC = () => {
         <div className="mt-6">
           <Link href="/dashboard">
             <button className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded hover:bg-blue-200 cursor-pointer">
-              ← Back to Dashboard
+              {UI_STRINGS.buttons.backToDashboard}
             </button>
           </Link>
         </div>

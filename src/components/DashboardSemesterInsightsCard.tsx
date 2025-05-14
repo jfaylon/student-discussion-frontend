@@ -13,6 +13,7 @@ import { Bar } from "react-chartjs-2";
 import Link from "next/link";
 import { CourseSummary } from "@/interfaces";
 import { getSemester, getSemesters } from "@/api/dashboard";
+import { UI_STRINGS } from "@/constants";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
@@ -78,7 +79,9 @@ const DashboardSemesterInsightsCard: React.FC = () => {
   return (
     <div className="bg-white p-6 rounded shadow w-full col-span-full">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold">Semester Insights</h2>
+        <h2 className="text-xl font-semibold">
+          {UI_STRINGS.text.semesterInsights}
+        </h2>
         <select
           value={semester}
           onChange={(e) => setSemester(e.target.value)}
@@ -93,30 +96,34 @@ const DashboardSemesterInsightsCard: React.FC = () => {
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p>{UI_STRINGS.text.loading}</p>
       ) : (
         <>
           <div className="mt-6 border-t pt-4">
-            <h3 className="text-lg font-semibold mb-2">Semester Summary</h3>
+            <h3 className="text-lg font-semibold mb-2">
+              {UI_STRINGS.text.semesterSummary}
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Total Courses</p>
+                <p className="text-gray-600">{UI_STRINGS.text.totalCourses}</p>
                 <p className="text-xl font-bold">{courses.length}</p>
               </div>
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Total Students</p>
+                <p className="text-gray-600">{UI_STRINGS.text.totalStudents}</p>
                 <p className="text-xl font-bold">
                   {courses.reduce((sum, c) => sum + c.student_count, 0)}
                 </p>
               </div>
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Total Topics</p>
+                <p className="text-gray-600">{UI_STRINGS.text.totalTopics}</p>
                 <p className="text-xl font-bold">
                   {courses.reduce((sum, c) => sum + c.topic_count, 0)}
                 </p>
               </div>
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Average Topics / Course</p>
+                <p className="text-gray-600">
+                  {UI_STRINGS.text.averageTopicsPerCourse}
+                </p>
                 <p className="text-xl font-bold">
                   {Math.fround(
                     courses.reduce((sum, c) => sum + c.topic_count, 0) /
@@ -125,13 +132,15 @@ const DashboardSemesterInsightsCard: React.FC = () => {
                 </p>
               </div>
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Total Entries</p>
+                <p className="text-gray-600">{UI_STRINGS.text.totalEntries}</p>
                 <p className="text-xl font-bold">
                   {courses.reduce((sum, c) => sum + c.entry_count, 0)}
                 </p>
               </div>
               <div className="bg-gray-50 p-3 rounded shadow">
-                <p className="text-gray-600">Average Entries / Course</p>
+                <p className="text-gray-600">
+                  {UI_STRINGS.text.averageEntriesPerCourse}
+                </p>
                 <p className="text-xl font-bold">
                   {courses.length > 0
                     ? Math.fround(
@@ -148,11 +157,21 @@ const DashboardSemesterInsightsCard: React.FC = () => {
             <table className="w-full table-auto border text-sm">
               <thead>
                 <tr className="bg-gray-100 text-left">
-                  <th className="border p-2">Course Code</th>
-                  <th className="border p-2">Course Name</th>
-                  <th className="border p-2">Students</th>
-                  <th className="border p-2">Topics</th>
-                  <th className="border p-2">Entries</th>
+                  <th className="border p-2">
+                    {UI_STRINGS.tableHeaders.courseCode}
+                  </th>
+                  <th className="border p-2">
+                    {UI_STRINGS.tableHeaders.courseName}
+                  </th>
+                  <th className="border p-2">
+                    {UI_STRINGS.tableHeaders.students}
+                  </th>
+                  <th className="border p-2">
+                    {UI_STRINGS.tableHeaders.topics}
+                  </th>
+                  <th className="border p-2">
+                    {UI_STRINGS.tableHeaders.entries}
+                  </th>
                 </tr>
               </thead>
               <tbody>
