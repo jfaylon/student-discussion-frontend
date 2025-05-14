@@ -48,7 +48,7 @@ This is the preferred method for isolated environments.
 cp .env.docker.example .env.docker
 ```
 
-> Make sure `NEXT_PUBLIC_BACKEND_API_URL` is pointing to your backend (usually `http://localhost:8000`).
+> Make sure `NEXT_PUBLIC_BACKEND_API_URL` is pointing to your backend (usually `http://backend:8000` if backend is deployed in docker, localhost if deployed on local).
 
 #### 2. Build the Docker image
 
